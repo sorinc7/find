@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Find</string>
+    <string name="restaurante">Restaurante</string>
+    <string name="interior">Interior</string>
+    <string name="terasa">Terasa</string>
+    <string name="meniul_zilei">Meniul zilei</string>
+    <string name="numar_persoane">Numar persoane</string>
+</resources>
