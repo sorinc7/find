@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
@@ -24,7 +25,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -33,25 +36,31 @@ import java.util.ArrayList;
 import static android.support.v7.appcompat.R.styleable.CompoundButton;
 
 
-public class restaurante extends AppCompatActivity implements android.widget.CompoundButton.OnCheckedChangeListener {
+public class restaurante extends AppCompatActivity implements android.widget.CompoundButton.OnCheckedChangeListener, LocationListener {
     SeekBar seekbar;
     SwitchCompat fumatori;
     SwitchCompat romaneasca;
     SwitchCompat italiana;
     SwitchCompat chinezeasca;
     SwitchCompat livrareDomiciliu;
+    protected LocationManager locationManager;
+    protected LocationListener locationListener;
     int fumatori1 = 0;
     int romaneasca1 = 0;
     int italiana1 = 0;
     int chinezeasca1 = 0;
     int livrareDomiciliu1 = 0;
     int numarPersoane = 0;
+    static double latitude ,longitude;
     String request;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurante);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         // ATRIBUIREA ELEMENTELOR INCEPE AICI
 
         fumatori = (SwitchCompat) findViewById(R.id.fumatori);
@@ -63,66 +72,7 @@ public class restaurante extends AppCompatActivity implements android.widget.Com
 
         //ATRIBUIREA ELEMENTELOR SE TERMINA AICI
 
-        //CEREREA PERMISIUNII DE LOCATIE INCEPE AICI
 
-        int permissionCheck1 = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION);
-        int permissionCheck2 = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION);
-
-        final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-        if (permissionCheck1
-                != PackageManager.PERMISSION_GRANTED) {
-
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-                new AlertDialog.Builder(this)
-                        .setTitle("Acces locatie")
-                        .setMessage("Aplicatia are nevoie de locatia dvs. pentru a afisa rezultate relevante.")
-                        .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //Prompt the user once explanation has been shown
-                                ActivityCompat.requestPermissions((Activity) getApplicationContext(),
-                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                        MY_PERMISSIONS_REQUEST_LOCATION);
-                            }
-                        })
-                        .create()
-                        .show();
-
-            } else {
-
-                // No explanation needed, we can request the permission.
-
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_LOCATION);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
-            }
-
-
-        }
-//
-//        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) this);
-//        locationManager.getLastKnownLocation();
-
-
-
-
-
-
-
-        //CEREREA PERMISIUNII DE LOCATIE SE TERMINA AICI
 
         final TextView textView = (TextView)findViewById(R.id.count);
         seekbar = (SeekBar)findViewById(R.id.line3);
@@ -187,6 +137,32 @@ public class restaurante extends AppCompatActivity implements android.widget.Com
             }
         }
     }
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
+
 
     public void createRequest(){
         // here we create the request for later usage
@@ -194,7 +170,7 @@ public class restaurante extends AppCompatActivity implements android.widget.Com
         try {
             request= URLEncoder.encode("fumatori","UTF-8")+"="+URLEncoder.encode(String.valueOf(fumatori1),"UTF-8")+"&"+URLEncoder.encode("romaneasca","UTF-8")+"="+URLEncoder.encode(String.valueOf(romaneasca1),"UTF-8")
             +"&"+URLEncoder.encode("italiana","UTF-8")+"="+URLEncoder.encode(String.valueOf(italiana1),"UTF-8")+"&"+URLEncoder.encode("chinezeasca","UTF-8")+"="+URLEncoder.encode(String.valueOf(chinezeasca1),"UTF-8")
-            +"&"+URLEncoder.encode("livrareDomiciliu","UTF-8")+"="+URLEncoder.encode(String.valueOf(livrareDomiciliu1),"UTF-8")+"&"+URLEncoder.encode("numarPersoane","UTF-8")+"="+URLEncoder.encode(String.valueOf(numarPersoane),"UTF-8");
+            +"&"+URLEncoder.encode("livrareDomiciliu","UTF-8")+"="+URLEncoder.encode(String.valueOf(livrareDomiciliu1),"UTF-8")+"&"+URLEncoder.encode("numarPersoane","UTF-8")+"="+URLEncoder.encode(String.valueOf(numarPersoane),"UTF-8")+"&"+URLEncoder.encode("latitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(latitude),"UTF-8")+"&"+URLEncoder.encode("longitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(longitude),"UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -211,8 +187,5 @@ public class restaurante extends AppCompatActivity implements android.widget.Com
 
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-    }
 }
