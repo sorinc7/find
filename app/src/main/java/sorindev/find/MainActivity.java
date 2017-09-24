@@ -37,20 +37,20 @@ public class MainActivity extends AppCompatActivity {
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
-                new AlertDialog.Builder(this)
-                        .setTitle("Acces locatie")
-                        .setMessage("Aplicatia are nevoie de locatia dvs. pentru a afisa rezultate relevante.")
-                        .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //Prompt the user once explanation has been shown
-                                ActivityCompat.requestPermissions((Activity) getApplicationContext(),
-                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                        MY_PERMISSIONS_REQUEST_LOCATION);
-                            }
-                        })
-                        .create()
-                        .show();
+//                new AlertDialog.Builder(this)
+//                        .setTitle("Acces locatie")
+//                        .setMessage("Aplicatia are nevoie de locatia dvs. pentru a afisa rezultate relevante.")
+//                        .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                //Prompt the user once explanation has been shown
+//                                ActivityCompat.requestPermissions((Activity) getApplicationContext(),
+//                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+//                                        MY_PERMISSIONS_REQUEST_LOCATION);
+//                            }
+//                        })
+//                        .create()
+//                        .show();
 
             } else {
 
