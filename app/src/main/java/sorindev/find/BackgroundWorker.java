@@ -1,7 +1,9 @@
 package sorindev.find;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.webkit.WebSettings;
 
@@ -27,18 +29,22 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * Created by ProgrammingKnowledge on 1/5/2016.
  */
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     Context context;
+    public static String result="";
     AlertDialog alertDialog;
-    BackgroundWorker (Context ctx) {
+    BackgroundWorker(Context ctx) {
         context = ctx;
     }
     @Override
     protected String doInBackground(String... params) {
+
+
         String type = params[0];
         String post_data=params[2];
         String login_url = "https://cretescusorin.000webhostapp.com/requests/restaurante.php";
@@ -58,7 +64,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-                String result="";
+
                 String line="";
                 while((line = bufferedReader.readLine())!= null) {
                     result += line;
@@ -82,21 +88,15 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     public void onPostExecute(String result) {
-//
-        Gson gson = new Gson();
-        Address[] address = gson.fromJson(result, Address[].class);
-        String message1="";
-        int x=0;
-        if(address!=null)
-            x=address.length;
-        for(int i=0; i<x; i++){
-            message1+=address[i].nume+'\n';
-        }
+        Thread myThread = new Thread(){
+            @Override
+            public void run() {
+                Intent intent = new Intent(context,MapsActivityRestaurante.class);
+                context.startActivity(intent);
 
-
-        alertDialog.setMessage(result);
-        alertDialog.show();
-
+            }
+        };
+        myThread.start();
     }
 
     @Override

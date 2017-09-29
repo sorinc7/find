@@ -69,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //CEREREA PERMISIUNII DE LOCATIE SE TERMINA AICI
-        ImageView fastfood = (ImageView)findViewById(R.id.restaurantImg);
-        fastfood.setOnClickListener(
+
+
+        ImageView restaurante = (ImageView)findViewById(R.id.restaurantImg);
+        restaurante.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View view){
                         Thread myThread = new Thread(){
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             public void run() {
                                     Intent intent = new Intent(getApplicationContext(),restaurante.class);
                                     startActivity(intent);
-                                    finish();
+
                             }
                         };
                         myThread.start();

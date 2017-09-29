@@ -2,38 +2,24 @@ package sorindev.find;
 
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.Switch;
 import android.widget.TextView;
-
-import com.google.android.gms.common.api.GoogleApiClient;
-
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-
-import static android.support.v7.appcompat.R.styleable.CompoundButton;
 
 
 public class restaurante extends AppCompatActivity implements android.widget.CompoundButton.OnCheckedChangeListener, LocationListener {
@@ -44,7 +30,7 @@ public class restaurante extends AppCompatActivity implements android.widget.Com
     SwitchCompat chinezeasca;
     SwitchCompat livrareDomiciliu;
     protected LocationManager locationManager;
-    protected LocationListener locationListener;
+
     int fumatori1 = 0;
     int romaneasca1 = 0;
     int italiana1 = 0;
@@ -60,6 +46,9 @@ public class restaurante extends AppCompatActivity implements android.widget.Com
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurante);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationListener locationListener = new restaurante();
+        locationManager.requestLocationUpdates(
+                LocationManager.NETWORK_PROVIDER, 5000, 10, locationListener);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -70,7 +59,7 @@ public class restaurante extends AppCompatActivity implements android.widget.Com
             // for ActivityCompat#requestPermissions for more details
         }
         // ATRIBUIREA ELEMENTELOR INCEPE AICI
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
         fumatori = (SwitchCompat) findViewById(R.id.fumatori);
         romaneasca=(SwitchCompat) findViewById(R.id.traditionalaRomaneasca);
         italiana = (SwitchCompat) findViewById(R.id.traditionalaItaliana);
@@ -182,6 +171,8 @@ public class restaurante extends AppCompatActivity implements android.widget.Com
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+        Log.d("COORD", request);
+
     }
 
 
