@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,7 +15,23 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 public class MapsActivityRestaurante extends FragmentActivity implements OnMapReadyCallback {
+    //cod perntru lista
+    private ArrayAdapter<String> adaptNume;
+    private ArrayAdapter<String> adaptMeniu;
+    private ArrayAdapter<Integer> adaptmeniulZileiA;
+    private ArrayAdapter<String> adaptMeniulZilei;
+    private ArrayAdapter<String> adaptDateContact;
+    private ArrayAdapter<Integer> adaptNonStop;
+    private ArrayAdapter<Float> adaptLat;
+    private ArrayAdapter<Float> adaptLong;
+    ListView listView;
+
+    Gson gson = new Gson();
+    Address[] address = gson.fromJson(BackgroundWorker.result, Address[].class);
+    //cod pentru harta
 
     private GoogleMap mMap;
 
@@ -21,6 +39,8 @@ public class MapsActivityRestaurante extends FragmentActivity implements OnMapRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_restaurante);
+        //cod pentru lista
+        listView = (ListView)findViewById(R.id.listv);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -43,17 +63,35 @@ public class MapsActivityRestaurante extends FragmentActivity implements OnMapRe
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        Gson gson = new Gson();
-        Address[] address = gson.fromJson(BackgroundWorker.result, Address[].class);
+        mMap.addMarker(new MarkerOptions().position(new LatLng(-34, 151)).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(-34, 151)));
+
         String message1="";
         int x=0;
+        ArrayList<String> arrayNume = new ArrayList<>();
+        ArrayList<String> arrayMeniu = new ArrayList<>();
+        ArrayList<Integer> arrayMeniulZileiA = new ArrayList<>();
+        ArrayList<String> arrayMeniulZilei = new ArrayList<>();
+        ArrayList<String> arrayDateContact = new ArrayList<>();
+        ArrayList<Integer> arrayNonStop = new ArrayList<>();
+        ArrayList<Float> arrayLat = new ArrayList<>();
+        ArrayList<Float> arrayLong = new ArrayList<>();
+        adaptNume = new ArrayAdapter<String>(this, R.layout.list_item,R.id.numeitem, arrayNume);
+        listView.setAdapter(adaptNume);
         if(address!=null)
             x=address.length;
         for(int i=0; i<x; i++){
-            message1+=address[i].nume+'\n';
+            arrayNume.add(address[i].nume);
+            arrayMeniu.add(address[i].meniu);
+            arrayMeniulZileiA.add(address[i].meniul_zileiA);
+            arrayMeniulZilei.add(address[i].meniul_zilei);
+            arrayDateContact.add(address[i].date_contact);
+            arrayNonStop.add(address[i].non_stop);
+            arrayLat.add(address[i].latit);
+            arrayLong.add(address[i].longit);
+            adaptNume.notifyDataSetChanged();
         }
+
         AlertDialog alertDialog = new AlertDialog.Builder(MapsActivityRestaurante.this).create();
         alertDialog.setTitle("Alert");
         alertDialog.setMessage(message1);
