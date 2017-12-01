@@ -41,7 +41,8 @@
 
         <activity
             android:name=".MapsActivityRestaurante"
-            android:label="@string/title_activity_maps_restaurante"></activity>
+            android:label="@string/title_activity_maps_restaurante" />
+        <activity android:name=".pizzerii"></activity>
     </application>
 
 </manifest>

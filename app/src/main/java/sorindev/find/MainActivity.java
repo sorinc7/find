@@ -87,5 +87,21 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        ImageView pizzerii = (ImageView)findViewById(R.id.pizzaImg);
+        pizzerii.setOnClickListener(
+                new View.OnClickListener(){
+                    public void onClick(View view){
+                        Thread myThread = new Thread(){
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(),pizzerii.class);
+                                startActivity(intent);
+
+                            }
+                        };
+                        myThread.start();
+                    }
+                }
+        );
     }
 }
