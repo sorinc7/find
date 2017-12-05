@@ -33,12 +33,12 @@ import java.util.Map;
 /**
  * Created by ProgrammingKnowledge on 1/5/2016.
  */
-public class BackgroundWorkerPizza extends AsyncTask<String,Void,String> {
+public class BackgroundWorkerPubs extends AsyncTask<String,Void,String> {
 
     Context context;
     public static String result="";
     AlertDialog alertDialog;
-    BackgroundWorkerPizza(Context ctx) {
+    BackgroundWorkerPubs(Context ctx) {
         context = ctx;
     }
     @Override
@@ -47,7 +47,7 @@ public class BackgroundWorkerPizza extends AsyncTask<String,Void,String> {
 
         String type = params[0];
         String post_data=params[2];
-        String login_url = "https://cretescusorin.000webhostapp.com/requests/pizza.php";
+        String login_url = "https://cretescusorin.000webhostapp.com/requests/pubs.php";
         if(type.equals("login")) {
             try {
                 URL url = new URL(login_url);
@@ -91,7 +91,7 @@ public class BackgroundWorkerPizza extends AsyncTask<String,Void,String> {
         Thread myThread = new Thread(){
             @Override
             public void run() {
-                Intent intent = new Intent(context,MapsActivityPizza.class);
+                Intent intent = new Intent(context,MapsActivityPubs.class);
                 context.startActivity(intent);
 
             }
