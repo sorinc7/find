@@ -8,4 +8,9 @@
     <string name="title_activity_maps_restaurante">MapRestaurante</string>
     <string name="title_activity_fastfood">fastfood</string>
     <string name="title_activity_baruri">baruri</string>
+    <string name="title_activity_maps_pizza">Map</string>
+    <string name="title_activity_maps_spa">Map</string>
+    <string name="title_activity_maps_pubs">Map</string>
+    <string name="title_activity_maps_baruri">Map</string>
+    <string name="title_activity_maps_fastfood">Map</string>
 </resources>

@@ -52,7 +52,22 @@
             android:label="@string/title_activity_baruri"
             android:theme="@style/AppTheme" />
         <activity android:name=".pubs" />
-        <activity android:name=".spa"></activity>
+        <activity android:name=".spa" />
+        <activity
+            android:name=".MapsActivityPizza"
+            android:label="@string/title_activity_maps_pizza" />
+        <activity
+            android:name=".MapsActivitySpa"
+            android:label="@string/title_activity_maps_spa" />
+        <activity
+            android:name=".MapsActivityPubs"
+            android:label="@string/title_activity_maps_pubs" />
+        <activity
+            android:name=".MapsActivityBaruri"
+            android:label="@string/title_activity_maps_baruri" />
+        <activity
+            android:name=".MapsActivityFastfood"
+            android:label="@string/title_activity_maps_fastfood"></activity>
     </application>
 
 </manifest>
