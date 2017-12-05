@@ -76,6 +76,7 @@ public class MapsActivityRestaurante extends FragmentActivity implements OnMapRe
         ArrayList<Integer> arrayNonStop = new ArrayList<>();
         ArrayList<Float> arrayLat = new ArrayList<>();
         ArrayList<Float> arrayLong = new ArrayList<>();
+        ArrayList<Integer> arrayStatus = new ArrayList<>();
         adaptNume = new ArrayAdapter<String>(this, R.layout.list_item,R.id.numeitem, arrayNume);
         listView.setAdapter(adaptNume);
         if(address!=null)
@@ -89,6 +90,7 @@ public class MapsActivityRestaurante extends FragmentActivity implements OnMapRe
             arrayNonStop.add(address[i].non_stop);
             arrayLat.add(address[i].latit);
             arrayLong.add(address[i].longit);
+            arrayStatus.add(address[i].status);
             adaptNume.notifyDataSetChanged();
         }
 
