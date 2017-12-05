@@ -103,5 +103,70 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        ImageView fastfood = (ImageView)findViewById(R.id.fastfoodImg);
+        fastfood.setOnClickListener(
+                new View.OnClickListener(){
+                    public void onClick(View view){
+                        Thread myThread = new Thread(){
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(),fastfood.class);
+                                startActivity(intent);
+
+                            }
+                        };
+                        myThread.start();
+                    }
+                }
+        );
+
+        ImageView baruri = (ImageView)findViewById(R.id.baruriImg);
+        baruri.setOnClickListener(
+                new View.OnClickListener(){
+                    public void onClick(View view){
+                        Thread myThread = new Thread(){
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(),baruri.class);
+                                startActivity(intent);
+
+                            }
+                        };
+                        myThread.start();
+                    }
+                }
+        );
+        ImageView pubs = (ImageView)findViewById(R.id.pubImg);
+        pubs.setOnClickListener(
+                new View.OnClickListener(){
+                    public void onClick(View view){
+                        Thread myThread = new Thread(){
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(),pubs.class);
+                                startActivity(intent);
+
+                            }
+                        };
+                        myThread.start();
+                    }
+                }
+        );
+        ImageView spa = (ImageView)findViewById(R.id.spaImg);
+        spa.setOnClickListener(
+                new View.OnClickListener(){
+                    public void onClick(View view){
+                        Thread myThread = new Thread(){
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(),spa.class);
+                                startActivity(intent);
+
+                            }
+                        };
+                        myThread.start();
+                    }
+                }
+        );
     }
 }

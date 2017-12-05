@@ -6,4 +6,6 @@
     <string name="meniul_zilei">Meniul zilei</string>
     <string name="numar_persoane">Numar persoane</string>
     <string name="title_activity_maps_restaurante">MapRestaurante</string>
+    <string name="title_activity_fastfood">fastfood</string>
+    <string name="title_activity_baruri">baruri</string>
 </resources>

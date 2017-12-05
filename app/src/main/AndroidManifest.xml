@@ -42,7 +42,17 @@
         <activity
             android:name=".MapsActivityRestaurante"
             android:label="@string/title_activity_maps_restaurante" />
-        <activity android:name=".pizzerii"></activity>
+        <activity android:name=".pizzerii" />
+        <activity
+            android:name=".fastfood"
+            android:label="@string/title_activity_fastfood"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".baruri"
+            android:label="@string/title_activity_baruri"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".pubs" />
+        <activity android:name=".spa"></activity>
     </application>
 
 </manifest>

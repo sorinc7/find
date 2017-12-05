@@ -22,21 +22,25 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 
-public class pizzerii extends AppCompatActivity implements android.widget.CompoundButton.OnCheckedChangeListener, LocationListener {
+public class pubs extends AppCompatActivity implements android.widget.CompoundButton.OnCheckedChangeListener, LocationListener {
     SeekBar seekbar;
     SwitchCompat fumatori;
-    SwitchCompat vegetariana;
-    SwitchCompat paste;
-    SwitchCompat alcool;
-    SwitchCompat livrareDomiciliu;
+    SwitchCompat biliard;
+    SwitchCompat darts;
+    SwitchCompat karaoke;
+    SwitchCompat concerte;
+    SwitchCompat standup;
+    SwitchCompat narghilea;
     protected LocationManager locationManager;
 
     int fumatori1 = 0;
-    int vegetariana1 = 0;
-    int paste1 = 0;
-    int alcool1 = 0;
-    int livrareDomiciliu1 = 0;
+    int biliard1 = 0;
+    int darts1 = 0;
+    int karaoke1 = 0;
+    int concerte1 = 0;
+    int standup1 = 0;
     int numarPersoane = 0;
+    int narghilea1 = 0;
     static double latitude, longitude;
     String request;
 
@@ -44,9 +48,9 @@ public class pizzerii extends AppCompatActivity implements android.widget.Compou
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pizzerii);
+        setContentView(R.layout.activity_pubs);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        LocationListener locationListener = new pizzerii();
+        LocationListener locationListener = new pubs();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -71,11 +75,12 @@ public class pizzerii extends AppCompatActivity implements android.widget.Compou
         // ATRIBUIREA ELEMENTELOR INCEPE AICI
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
         fumatori = (SwitchCompat) findViewById(R.id.fumatori);
-        vegetariana=(SwitchCompat) findViewById(R.id.vegetariana);
-        paste = (SwitchCompat) findViewById(R.id.paste);
-        alcool=(SwitchCompat) findViewById(R.id.alcool);
-        livrareDomiciliu=(SwitchCompat) findViewById(R.id.livrareDomiciliu);
-
+        biliard=(SwitchCompat) findViewById(R.id.biliard);
+        darts = (SwitchCompat) findViewById(R.id.darts);
+        karaoke=(SwitchCompat) findViewById(R.id.karaoke);
+        concerte = (SwitchCompat) findViewById(R.id.concerte);
+        standup=(SwitchCompat) findViewById(R.id.standup);
+        narghilea=(SwitchCompat) findViewById(R.id.narghilea);
 
         //ATRIBUIREA ELEMENTELOR SE TERMINA AICI
 
@@ -119,30 +124,43 @@ public class pizzerii extends AppCompatActivity implements android.widget.Compou
                 fumatori1 = 1;
             }
         }
-        if (vegetariana != null) {
-            vegetariana.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
-            if(vegetariana.isChecked()){
-                vegetariana1 = 1;
+        if (biliard != null) {
+            biliard.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(biliard.isChecked()){
+                biliard1 = 1;
             }
         }
-        if (paste != null) {
-            paste.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
-            if(paste.isChecked()){
-                paste1 = 1;
+        if (darts != null) {
+            darts.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(darts.isChecked()){
+                darts1 = 1;
             }
         }
-        if (alcool != null) {
-            alcool.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
-            if(alcool.isChecked()){
-                alcool1 = 1;
+        if (karaoke != null) {
+            karaoke.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(karaoke.isChecked()){
+                karaoke1 = 1;
             }
         }
-        if (livrareDomiciliu != null) {
-            livrareDomiciliu.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
-            if(livrareDomiciliu.isChecked()){
-                livrareDomiciliu1 = 1;
+        if (concerte != null) {
+            concerte.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(concerte.isChecked()){
+                concerte1 = 1;
             }
         }
+        if (standup != null) {
+            standup.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(standup.isChecked()){
+                standup1 = 1;
+            }
+        }
+        if (narghilea != null) {
+            narghilea.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(narghilea.isChecked()){
+                narghilea1 = 1;
+            }
+        }
+
     }
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -175,9 +193,10 @@ public class pizzerii extends AppCompatActivity implements android.widget.Compou
         // here we create the request for later usage
 
         try {
-            request= URLEncoder.encode("fumatori","UTF-8")+"="+URLEncoder.encode(String.valueOf(fumatori1),"UTF-8")+"&"+URLEncoder.encode("vegetariana","UTF-8")+"="+URLEncoder.encode(String.valueOf(vegetariana1),"UTF-8")
-                    +"&"+URLEncoder.encode("paste","UTF-8")+"="+URLEncoder.encode(String.valueOf(paste1),"UTF-8")+"&"+URLEncoder.encode("alcool","UTF-8")+"="+URLEncoder.encode(String.valueOf(alcool1),"UTF-8")
-                    +"&"+URLEncoder.encode("livrareDomiciliu","UTF-8")+"="+URLEncoder.encode(String.valueOf(livrareDomiciliu1),"UTF-8")+"&"+URLEncoder.encode("numarPersoane","UTF-8")+"="+URLEncoder.encode(String.valueOf(numarPersoane),"UTF-8")+"&"+URLEncoder.encode("latitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(latitude),"UTF-8")+"&"+URLEncoder.encode("longitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(longitude),"UTF-8");
+            request= URLEncoder.encode("fumatori","UTF-8")+"="+URLEncoder.encode(String.valueOf(fumatori1),"UTF-8")+"&"+URLEncoder.encode("biliard","UTF-8")+"="+URLEncoder.encode(String.valueOf(biliard1),"UTF-8")
+                    +"&"+URLEncoder.encode("darts","UTF-8")+"="+URLEncoder.encode(String.valueOf(darts1),"UTF-8")+"&"+URLEncoder.encode("karaoke","UTF-8")+"="+URLEncoder.encode(String.valueOf(karaoke1),"UTF-8")
+                    +"&"+URLEncoder.encode("concerte","UTF-8")+"="+URLEncoder.encode(String.valueOf(concerte1),"UTF-8")+"&"+URLEncoder.encode("standup","UTF-8")+"="+URLEncoder.encode(String.valueOf(standup1),"UTF-8")+"&"+URLEncoder.encode("narghilea","UTF-8")+"="+URLEncoder.encode(String.valueOf(narghilea1),"UTF-8")
+                    +"&"+URLEncoder.encode("numarPersoane","UTF-8")+"="+URLEncoder.encode(String.valueOf(numarPersoane),"UTF-8")+"&"+URLEncoder.encode("latitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(latitude),"UTF-8")+"&"+URLEncoder.encode("longitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(longitude),"UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

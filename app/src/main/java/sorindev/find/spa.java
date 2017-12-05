@@ -22,21 +22,29 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 
-public class pizzerii extends AppCompatActivity implements android.widget.CompoundButton.OnCheckedChangeListener, LocationListener {
+public class spa extends AppCompatActivity implements android.widget.CompoundButton.OnCheckedChangeListener, LocationListener {
     SeekBar seekbar;
-    SwitchCompat fumatori;
-    SwitchCompat vegetariana;
-    SwitchCompat paste;
-    SwitchCompat alcool;
-    SwitchCompat livrareDomiciliu;
+    SwitchCompat interioara;
+    SwitchCompat exterioara;
+    SwitchCompat relaxare;
+    SwitchCompat celulita;
+    SwitchCompat coafura;
+    SwitchCompat manichiura;
+    SwitchCompat pedichiura;
+    SwitchCompat machiaj;
+    SwitchCompat solar;
     protected LocationManager locationManager;
 
-    int fumatori1 = 0;
-    int vegetariana1 = 0;
-    int paste1 = 0;
-    int alcool1 = 0;
-    int livrareDomiciliu1 = 0;
+    int interioara1 = 0;
+    int exterioara1 = 0;
+    int relaxare1 = 0;
+    int celulita1 = 0;
+    int coafura1 = 0;
+    int manichiura1 = 0;
     int numarPersoane = 0;
+    int pedichiura1 = 0;
+    int machiaj1 = 0;
+    int solar1 = 0;
     static double latitude, longitude;
     String request;
 
@@ -44,9 +52,9 @@ public class pizzerii extends AppCompatActivity implements android.widget.Compou
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pizzerii);
+        setContentView(R.layout.activity_spa);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        LocationListener locationListener = new pizzerii();
+        LocationListener locationListener = new spa();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -70,12 +78,15 @@ public class pizzerii extends AppCompatActivity implements android.widget.Compou
         }
         // ATRIBUIREA ELEMENTELOR INCEPE AICI
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
-        fumatori = (SwitchCompat) findViewById(R.id.fumatori);
-        vegetariana=(SwitchCompat) findViewById(R.id.vegetariana);
-        paste = (SwitchCompat) findViewById(R.id.paste);
-        alcool=(SwitchCompat) findViewById(R.id.alcool);
-        livrareDomiciliu=(SwitchCompat) findViewById(R.id.livrareDomiciliu);
-
+        interioara = (SwitchCompat) findViewById(R.id.interioara);
+        exterioara=(SwitchCompat) findViewById(R.id.exterioara);
+        relaxare = (SwitchCompat) findViewById(R.id.relaxare);
+        celulita=(SwitchCompat) findViewById(R.id.celulita);
+        coafura = (SwitchCompat) findViewById(R.id.coafura);
+        manichiura=(SwitchCompat) findViewById(R.id.manichiura);
+        pedichiura=(SwitchCompat) findViewById(R.id.pedichiura);
+        machiaj=(SwitchCompat) findViewById(R.id.machiaj);
+        solar=(SwitchCompat) findViewById(R.id.solar);
 
         //ATRIBUIREA ELEMENTELOR SE TERMINA AICI
 
@@ -113,36 +124,61 @@ public class pizzerii extends AppCompatActivity implements android.widget.Compou
         );
     }
     public void getData(){
-        if (fumatori != null) {
-            fumatori.setOnCheckedChangeListener(this);
-            if(fumatori.isChecked()){
-                fumatori1 = 1;
+        if (interioara != null) {
+            interioara.setOnCheckedChangeListener(this);
+            if(interioara.isChecked()){
+                interioara1 = 1;
             }
         }
-        if (vegetariana != null) {
-            vegetariana.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
-            if(vegetariana.isChecked()){
-                vegetariana1 = 1;
+        if (exterioara != null) {
+            exterioara.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(exterioara.isChecked()){
+                exterioara1 = 1;
             }
         }
-        if (paste != null) {
-            paste.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
-            if(paste.isChecked()){
-                paste1 = 1;
+        if (relaxare != null) {
+            relaxare.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(relaxare.isChecked()){
+                relaxare1 = 1;
             }
         }
-        if (alcool != null) {
-            alcool.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
-            if(alcool.isChecked()){
-                alcool1 = 1;
+        if (celulita != null) {
+            celulita.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(celulita.isChecked()){
+                celulita1 = 1;
             }
         }
-        if (livrareDomiciliu != null) {
-            livrareDomiciliu.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
-            if(livrareDomiciliu.isChecked()){
-                livrareDomiciliu1 = 1;
+        if (coafura != null) {
+            coafura.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(coafura.isChecked()){
+                coafura1 = 1;
             }
         }
+        if (manichiura != null) {
+            manichiura.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(manichiura.isChecked()){
+                manichiura1 = 1;
+            }
+        }
+        if (pedichiura != null) {
+            pedichiura.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(pedichiura.isChecked()){
+                pedichiura1 = 1;
+            }
+        }
+        if (machiaj != null) {
+            machiaj.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(machiaj.isChecked()){
+                machiaj1 = 1;
+            }
+        }
+        if (solar != null) {
+            solar.setOnCheckedChangeListener((android.widget.CompoundButton.OnCheckedChangeListener) this);
+            if(solar.isChecked()){
+                solar1 = 1;
+            }
+        }
+
     }
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -175,9 +211,10 @@ public class pizzerii extends AppCompatActivity implements android.widget.Compou
         // here we create the request for later usage
 
         try {
-            request= URLEncoder.encode("fumatori","UTF-8")+"="+URLEncoder.encode(String.valueOf(fumatori1),"UTF-8")+"&"+URLEncoder.encode("vegetariana","UTF-8")+"="+URLEncoder.encode(String.valueOf(vegetariana1),"UTF-8")
-                    +"&"+URLEncoder.encode("paste","UTF-8")+"="+URLEncoder.encode(String.valueOf(paste1),"UTF-8")+"&"+URLEncoder.encode("alcool","UTF-8")+"="+URLEncoder.encode(String.valueOf(alcool1),"UTF-8")
-                    +"&"+URLEncoder.encode("livrareDomiciliu","UTF-8")+"="+URLEncoder.encode(String.valueOf(livrareDomiciliu1),"UTF-8")+"&"+URLEncoder.encode("numarPersoane","UTF-8")+"="+URLEncoder.encode(String.valueOf(numarPersoane),"UTF-8")+"&"+URLEncoder.encode("latitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(latitude),"UTF-8")+"&"+URLEncoder.encode("longitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(longitude),"UTF-8");
+            request= URLEncoder.encode("interioara","UTF-8")+"="+URLEncoder.encode(String.valueOf(interioara1),"UTF-8")+"&"+URLEncoder.encode("exterioara","UTF-8")+"="+URLEncoder.encode(String.valueOf(exterioara1),"UTF-8")
+                    +"&"+URLEncoder.encode("relaxare","UTF-8")+"="+URLEncoder.encode(String.valueOf(relaxare1),"UTF-8")+"&"+URLEncoder.encode("celulita","UTF-8")+"="+URLEncoder.encode(String.valueOf(celulita1),"UTF-8")
+                    +"&"+URLEncoder.encode("coafura","UTF-8")+"="+URLEncoder.encode(String.valueOf(coafura1),"UTF-8")+"&"+URLEncoder.encode("manichiura","UTF-8")+"="+URLEncoder.encode(String.valueOf(manichiura1),"UTF-8")+"&"+URLEncoder.encode("pedichiura","UTF-8")+"="+URLEncoder.encode(String.valueOf(pedichiura1),"UTF-8")+"&"+URLEncoder.encode("machiaj","UTF-8")+"="+URLEncoder.encode(String.valueOf(machiaj1),"UTF-8")+"&"+URLEncoder.encode("solar","UTF-8")+"="+URLEncoder.encode(String.valueOf(solar1),"UTF-8")
+                    +"&"+URLEncoder.encode("numarPersoane","UTF-8")+"="+URLEncoder.encode(String.valueOf(numarPersoane),"UTF-8")+"&"+URLEncoder.encode("latitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(latitude),"UTF-8")+"&"+URLEncoder.encode("longitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(longitude),"UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

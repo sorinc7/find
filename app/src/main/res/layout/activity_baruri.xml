@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sorindev.find.MainActivity"
+    android:background="#e9ebee"
+    tools:background="#e9ebee">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="top"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/susus" />
+    <TextView
+        android:id="@+id/myImageViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView6"
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_alignEnd="@+id/imageView6"
+        android:layout_alignBottom="@+id/imageView6"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="Baruri"
+        android:textSize="30sp"
+        android:textColor="#FFFFFF"
+        android:layout_alignRight="@+id/imageView6"
+        android:layout_alignLeft="@+id/imageView6" />
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        android:adjustViewBounds="true"
+        android:scaleY="-1"
+        android:src="@mipmap/susus"
+        />
+
+    <ImageView
+        android:id="@+id/lupa"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:gravity="right"
+        android:paddingBottom="3dp"
+        android:src="@mipmap/search"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/myImageViewText"
+        android:layout_alignEnd="@+id/myImageViewText" />
+
+    <ScrollView
+        android:layout_below="@id/imageView6"
+        android:layout_above="@id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/relativ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView6"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/cadran"
+                android:padding="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/textpers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingStart="15dp"
+                    android:text="@string/numar_persoane"
+                    android:textColor="#303F9F"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@id/textpers"
+                    android:gravity="right"
+                    android:paddingEnd="15dp"
+                    android:paddingRight="15dp"
+                    android:text="1"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <SeekBar
+                    android:id="@+id/line3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textpers"
+                    android:layout_margin="10dp"
+                    android:fadingEdge="horizontal|vertical"
+                    android:isScrollContainer="false"
+                    android:max="20"
+                    android:maxHeight="5sp"
+                    android:progress="1"
+                    android:progressDrawable="@mipmap/seekbar_progressbar"
+                    android:thumb="@mipmap/thumb_image"
+                    android:thumbTintMode="multiply" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/fumatori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line3"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:maxHeight="5dp"
+                    android:paddingLeft="15dp"
+                    android:text="Fumatori"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:theme="@style/SCBSwitch"
+                    android:thumb="@mipmap/thumb_image"
+                    android:trackTint="#000000"
+                    android:trackTintMode="multiply" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativ2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relativ"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="17dp"
+                android:background="@mipmap/cadran"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/prim1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="15dp"
+                    android:text="Facilităţi"
+                    android:textColor="#303F9F"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/biliard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/prim1"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:maxHeight="5dp"
+                    android:paddingLeft="15dp"
+                    android:text="Biliard"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:theme="@style/SCBSwitch"
+                    android:thumb="@mipmap/thumb_image"
+                    android:trackTint="#000000"
+                    android:trackTintMode="multiply" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/darts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/biliard"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:maxHeight="5dp"
+                    android:paddingLeft="15dp"
+                    android:text="Darts"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:theme="@style/SCBSwitch"
+                    android:thumb="@mipmap/thumb_image"
+                    android:trackTint="#000000"
+                    android:trackTintMode="multiply" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativ3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="17dp"
+                android:background="@mipmap/cadran"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/prim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="15dp"
+                    android:text="Tematică"
+                    android:textColor="#303F9F"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/fotbal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/prim"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:maxHeight="5dp"
+                    android:paddingLeft="15dp"
+                    android:text="Fotbal"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:theme="@style/SCBSwitch"
+                    android:thumb="@mipmap/thumb_image"
+                    android:trackTint="#000000"
+                    android:trackTintMode="multiply" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/baschet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fotbal"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:maxHeight="5dp"
+                    android:paddingLeft="15dp"
+                    android:text="Baschet"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:theme="@style/SCBSwitch"
+                    android:thumb="@mipmap/thumb_image"
+                    android:trackTint="#000000"
+                    android:trackTintMode="multiply" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/baschet"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:maxHeight="5dp"
+                    android:paddingLeft="15dp"
+                    android:text="Box"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:theme="@style/SCBSwitch"
+                    android:thumb="@mipmap/thumb_image"
+                    android:trackTint="#000000"
+                    android:trackTintMode="multiply" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
+
