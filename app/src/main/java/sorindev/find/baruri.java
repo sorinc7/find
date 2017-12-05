@@ -202,8 +202,8 @@ public class baruri extends AppCompatActivity implements android.widget.Compound
         String arg2 = "";
         String type="login";
 
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, arg2, request);
+        BackgroundWorkerBaruri backgroundWorkerBaruri = new BackgroundWorkerBaruri(this);
+        backgroundWorkerBaruri.execute(type, arg2, request);
 
     }
 

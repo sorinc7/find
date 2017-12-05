@@ -228,8 +228,8 @@ public class spa extends AppCompatActivity implements android.widget.CompoundBut
         String arg2 = "";
         String type="login";
 
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, arg2, request);
+        BackgroundWorkerSpa backgroundWorkerSpa = new BackgroundWorkerSpa(this);
+        backgroundWorkerSpa.execute(type, arg2, request);
 
     }
 

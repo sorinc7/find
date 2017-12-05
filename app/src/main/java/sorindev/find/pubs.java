@@ -210,8 +210,8 @@ public class pubs extends AppCompatActivity implements android.widget.CompoundBu
         String arg2 = "";
         String type="login";
 
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, arg2, request);
+        BackgroundWorkerPubs backgroundWorkerPubs = new BackgroundWorkerPubs(this);
+        backgroundWorkerPubs.execute(type, arg2, request);
 
     }
 

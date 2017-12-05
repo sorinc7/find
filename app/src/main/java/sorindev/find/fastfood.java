@@ -183,8 +183,8 @@ public class fastfood extends AppCompatActivity implements android.widget.Compou
         String arg2 = "";
         String type="login";
 
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, arg2, request);
+        BackgroundWorkerFastfood backgroundWorkerFastfood = new BackgroundWorkerFastfood(this);
+        backgroundWorkerFastfood.execute(type, arg2, request);
 
     }
 
