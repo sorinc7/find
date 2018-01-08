@@ -21,14 +21,16 @@
         tools:context="sorindev.find.MapsActivityRestaurante"
         android:layout_weight="1"
         android:layout_height="0dp"/>
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/listv"
-        >
+    <!--<ListView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:id="@+id/listv"-->
+        <!--&gt;-->
+    <!---->
 
+    <!--</ListView>-->
 
-    </ListView>
+    
 
     </LinearLayout>

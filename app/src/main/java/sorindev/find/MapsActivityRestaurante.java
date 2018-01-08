@@ -40,7 +40,7 @@ public class MapsActivityRestaurante extends FragmentActivity implements OnMapRe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_restaurante);
         //cod pentru lista
-        listView = (ListView)findViewById(R.id.listv);
+        //listView = (ListView)findViewById(R.id.listv);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -62,10 +62,9 @@ public class MapsActivityRestaurante extends FragmentActivity implements OnMapRe
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+//        LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(new LatLng(-34, 151)).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(-34, 151)));
-
         String message1="";
         int x=0;
         ArrayList<String> arrayNume = new ArrayList<>();
@@ -77,7 +76,7 @@ public class MapsActivityRestaurante extends FragmentActivity implements OnMapRe
         ArrayList<Float> arrayLat = new ArrayList<>();
         ArrayList<Float> arrayLong = new ArrayList<>();
         ArrayList<Integer> arrayStatus = new ArrayList<>();
-        adaptNume = new ArrayAdapter<String>(this, R.layout.list_item,R.id.numeitem, arrayNume);
+        adaptNume = new ArrayAdapter<String>(this, R.layout.list_item, R.id.numeitem, arrayNume);
         listView.setAdapter(adaptNume);
         if(address!=null)
             x=address.length;
@@ -96,7 +95,7 @@ public class MapsActivityRestaurante extends FragmentActivity implements OnMapRe
 
         AlertDialog alertDialog = new AlertDialog.Builder(MapsActivityRestaurante.this).create();
         alertDialog.setTitle("Alert");
-        alertDialog.setMessage(message1);
+        alertDialog.setMessage(BackgroundWorker.result);
         alertDialog.show();
     }
     @Override

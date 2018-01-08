@@ -67,7 +67,8 @@
             android:label="@string/title_activity_maps_baruri" />
         <activity
             android:name=".MapsActivityFastfood"
-            android:label="@string/title_activity_maps_fastfood"></activity>
+            android:label="@string/title_activity_maps_fastfood" />
+        <activity android:name=".start"></activity>
     </application>
 
 </manifest>

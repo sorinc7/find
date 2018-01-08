@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sorindev.find.MainActivity"
+    android:background="#e9ebee"
+    tools:background="#e9ebee">
+
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_gravity="top"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/susus"
+        />
+
+    <TextView
+        android:id="@+id/myImageViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView6"
+        android:layout_alignLeft="@+id/imageView6"
+        android:layout_alignRight="@+id/imageView6"
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="Ceva la baza"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/scroll"
+        android:layout_below="@id/imageView6"
+        android:layout_above="@id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100px" />
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView6"
+            android:id="@+id/relativ"
+            android:background="@mipmap/cadran"
+            >
+        <Switch
+            android:paddingTop="15dp"
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:paddingLeft="50px"
+            android:paddingRight="50px"
+            android:text="Foloseşte locaţia telefonului"
+            android:textColor="#303F9F"
+            android:textStyle="bold"
+            android:textSize="20dp"
+
+            android:thumb="@mipmap/thumb_image"
+            android:trackTint="#000000"
+            android:trackTintMode="multiply"
+            android:theme="@style/SCBSwitch"
+             />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="140px"
+            android:layout_below="@id/switch1"
+            android:paddingLeft="40px"
+            android:layout_marginTop="20px"
+            android:paddingRight="40px"
+            app:srcCompat="@drawable/butonsearch" />
+
+            <TextView
+                android:id="@+id/textpers"
+                android:layout_margin="10dp"
+                android:layout_below="@id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Raza de cautare"
+                android:textColor="#303F9F"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:paddingLeft="15dp"
+                android:paddingStart="15dp"/>
+            <TextView
+                android:id="@+id/count"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 km"
+                android:layout_below="@id/imageView4"
+                android:layout_toRightOf="@id/textpers"
+                android:textSize="20dp"
+                android:layout_alignParentRight="true"
+                android:paddingRight="15dp"
+                android:paddingEnd="15dp"
+                android:gravity="right"
+                android:textColor="#000000"/>
+            <SeekBar
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textpers"
+                android:layout_margin="10dp"
+                android:fadingEdge="horizontal|vertical"
+                android:isScrollContainer="false"
+                android:max="20"
+                android:maxHeight="5sp"
+                android:progress="1"
+                android:progressDrawable="@mipmap/seekbar_progressbar"
+                android:thumbTintMode="multiply"
+                android:thumb="@mipmap/thumb_image"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 km"
+                android:layout_below="@id/line3"
+                android:paddingLeft="25dp"
+                android:paddingStart="25dp"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20 km"
+                android:layout_below="@id/line3"
+                android:layout_alignParentRight="true"
+                android:paddingRight="25dp"
+                android:paddingEnd="25dp"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:paddingBottom="15dp"
+                />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/bara_jos"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="125px"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        <ImageView
+            android:paddingTop="13px"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/locatieselectat"
+            android:layout_weight="1"/>
+        <ImageView
+            android:paddingTop="13px"
+            android:id="@+id/acasa"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/acasaneselectat"
+            android:layout_weight="1"/>
+        <ImageView
+            android:paddingTop="13px"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/rezultateneselectat"/>
+        <ImageView
+            android:paddingTop="13px"
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/contulmeu"/>
+    </LinearLayout>
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView5"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:src="@drawable/bara_jos" />-->
+</RelativeLayout>
